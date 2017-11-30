@@ -2,6 +2,7 @@ package com.wentongwang.mysports.constant;
 
 /**
  * Created by Wentong WANG on 2017/3/21.
+ *
  */
 public class IntentConstants {
 

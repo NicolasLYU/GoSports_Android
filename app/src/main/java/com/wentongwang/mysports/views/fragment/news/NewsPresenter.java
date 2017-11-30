@@ -76,7 +76,7 @@ public class NewsPresenter {
     }*/
 
     public void getNews(){
-        String url =Constant.HOST + Constant.GET_NEWS_PATH;
+        String url =Constant.LOCAL_HOST + Constant.GET_NEWS_PATH;
         VolleyResponse<NewsInfo> newsResponse = new VolleyResponse<>();
         Map<String, String> params = new HashMap<>();
         params.put("user_id", "");

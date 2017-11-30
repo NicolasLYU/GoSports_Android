@@ -117,7 +117,7 @@ public class CreateEventPresenter extends BasePresenter<CreateEventView> impleme
         params.put("user_id", "1");
         params.put("eventJson", eventJson);
 
-        String url = Constant.HOST + Constant.CREATE_EVENT_PATH;
+        String url = Constant.LOCAL_HOST + Constant.CREATE_EVENT_PATH;
 
         view.showProgressBar();
         RxVolleyRequest.getInstance().operationRequestObservable(mContext, Request.Method.POST, url, params)

@@ -90,7 +90,7 @@ public class AgendaPresenter {
         });
     }*/
     public void getAgenda(){
-        String url=Constant.HOST+ Constant.GET_AGENDA_PATH;
+        String url=Constant.LOCAL_HOST+ Constant.GET_AGENDA_PATH;
         VolleyResponse<AgendaEvents> agendaEventsVollyResponse=new VolleyResponse<>();
 
         Map<String, String> params = new HashMap<>();

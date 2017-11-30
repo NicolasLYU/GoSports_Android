@@ -2,7 +2,9 @@ package com.wentongwang.mysports.http.services;
 
 import com.wentongwang.mysports.http.RetrofitResult;
 
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -12,6 +14,9 @@ import rx.Observable;
 
 public interface SportService {
 
+
     @GET("home/sportevents")
     Observable<RetrofitResult> getHomePageSportEvents(@Query("user_like") String user_like);
+
+
 }

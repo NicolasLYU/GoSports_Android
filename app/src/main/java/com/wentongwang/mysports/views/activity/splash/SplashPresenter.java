@@ -34,7 +34,7 @@ public class SplashPresenter extends BasePresenter<SplashView>{
     }
 
     private void login(String userName, String userPwd) {
-        String url = Constant.HOST + Constant.LOGIN_PATH;
+        String url = Constant.LOCAL_HOST + Constant.LOGIN_PATH;
 
         Map<String, String> params = new HashMap<>();
         params.put("loginName", userName);

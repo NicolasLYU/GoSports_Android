@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.wentongwang.mysports.R;
 import com.wentongwang.mysports.base.BaseActivity;
+import com.wentongwang.mysports.utils.ActivityManager;
 import com.wentongwang.mysports.views.activity.home.HomeActivity;
 import com.wentongwang.mysports.views.activity.signup.SignUpActivity;
 
@@ -119,5 +120,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     public boolean autoLoginSelected() {
         return autoLoginCheckBox.isChecked();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ActivityManager.getInstance().exit();
     }
 }

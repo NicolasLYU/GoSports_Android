@@ -3,6 +3,7 @@ package com.wentongwang.mysports.views.activity.login;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.wentongwang.mysports.MyApplication;
 import com.wentongwang.mysports.R;
 import com.wentongwang.mysports.base.BasePresenter;
 import com.wentongwang.mysports.constant.Constant;
@@ -51,18 +52,24 @@ public class LoginPresenter extends BasePresenter<LoginView> {
             ToastUtil.show(mContext, mContext.getString(R.string.user_password_empty_alert), 1500);
             return;
         }
-
+        MyApplication myApplication = (MyApplication)this.mContext.getApplicationContext();
         view.showProgressBar();
 
         userInteractor.login(userName, userPwd, new InteractorCallback<LoginResponse>() {
             @Override
             public void onSuccess(LoginResponse result) {
                 view.hideProgressBar();
-                if (view.autoLoginSelected())
-                    saveUserLoginInfo(userName, userPwd);
-                else
-                    clearUserLoginInfo();
-                view.goToHomeActivity();
+                if(result==null){
+                    ToastUtil.show(mContext,"用户名或密码错误", 1500);
+                }else {
+                    myApplication.setUserId(result.getUserId());   //在application中保存当前账户id
+
+                    if (view.autoLoginSelected())
+                        saveUserLoginInfo(userName, userPwd);
+                    else
+                        clearUserLoginInfo();
+                    view.goToHomeActivity();
+                }
             }
 
             @Override

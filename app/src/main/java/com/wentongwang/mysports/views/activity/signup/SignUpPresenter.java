@@ -1,6 +1,6 @@
 package com.wentongwang.mysports.views.activity.signup;
 
-import android.content.Context;
+ import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.view.ViewGroup;

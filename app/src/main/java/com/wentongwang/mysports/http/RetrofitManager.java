@@ -34,6 +34,7 @@ public class RetrofitManager {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(httpClient)
                 .build();
+
     }
 
     public static Retrofit getRetrofit(){

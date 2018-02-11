@@ -209,6 +209,9 @@
     <!--CreateEventActivity-->
     <string name="create_event_failed">Create event failed!</string>
 
+    <!--ChooseSportsActivity-->
+    <string name="update_sports_like_failed">Update sports like failed</string>
+
 
     <!--NewsCommentActivity-->
     <string name="comment">comments</string>

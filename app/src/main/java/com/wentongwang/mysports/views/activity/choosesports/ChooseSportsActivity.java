@@ -10,6 +10,8 @@ import android.widget.GridView;
 import com.wentongwang.mysports.R;
 import com.wentongwang.mysports.custome.NoScrollGridView;
 import com.wentongwang.mysports.custome.PointsLayout;
+import com.wentongwang.mysports.http.RetrofitManager;
+import com.wentongwang.mysports.http.services.UserService;
 import com.wentongwang.mysports.model.module.SportEvents;
 import com.wentongwang.mysports.base.BaseActivity;
 
@@ -120,6 +122,7 @@ public class ChooseSportsActivity extends BaseActivity implements ChooseSportsVi
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mPresenter.sportsLikedConfirmed();
                 setResult(FINISHE_CHOSE_SPORTS);
                 onBackPressed();
             }

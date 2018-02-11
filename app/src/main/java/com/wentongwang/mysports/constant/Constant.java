@@ -9,8 +9,8 @@ public class Constant {
     //*********************** local host *******************************/
     //this is for test, in fact, should save in SP
 //    public static final String HOST = "http://35.156.49.76:8080/sports";
-    //public static final String HOST = "http://35.156.49.76:8080/sports/";
-    //public static final String LOCAL_HOST = "http://192.168.1.17:8080/sports/";
+    //public static final String HOST = "http://52.59.249.16:8080/GoSports/";
+    //public static final String LOCAL_HOST = "http://52.59.249.16:8080/GoSports/";
     public static final String LOCAL_HOST = "http://10.0.2.2:8080/";
 
     //*********************** servlet path *******************************//
@@ -24,6 +24,7 @@ public class Constant {
     //*********************** SharedPreference *******************************//
     public static final String USER_NAME = "USER_NAME";
     public static final String USER_PASSWORD = "USER_PASSWORD";
+
 
 
     //*********************** Intent Extra *******************************//

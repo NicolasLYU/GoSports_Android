@@ -1,5 +1,7 @@
 package com.wentongwang.mysports.http;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -7,8 +9,11 @@ import java.util.List;
  */
 
 public class RetrofitResult {
+    @SerializedName("message")
     String message;
+    @SerializedName("code")
     String code;
+    @SerializedName("result")
     String result;
 
     public String getMessage() {

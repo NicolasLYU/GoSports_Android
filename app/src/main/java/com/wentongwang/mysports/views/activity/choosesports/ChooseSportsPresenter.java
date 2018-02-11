@@ -2,20 +2,25 @@ package com.wentongwang.mysports.views.activity.choosesports;
 
 import android.content.Context;
 
+import com.wentongwang.mysports.MyApplication;
 import com.wentongwang.mysports.R;
 import com.wentongwang.mysports.base.BasePresenter;
-import com.wentongwang.mysports.model.bussiness.VollyRequestManager;
+import com.wentongwang.mysports.http.InteractorCallback;
+import com.wentongwang.mysports.http.interactor.UserInteractor;
 import com.wentongwang.mysports.model.module.SportEvents;
-import com.wentongwang.mysports.utils.VolleyUtil;
+import com.wentongwang.mysports.utils.ToastUtil;
+
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by Wentong WANG on 2016/10/14.
  */
 public class ChooseSportsPresenter extends BasePresenter<ChooseSportsView> implements PresenterHandler {
 
+    UserInteractor userInteractor;
     //all events
     private List<SportEvents> sportEvents;
 
@@ -33,6 +38,7 @@ public class ChooseSportsPresenter extends BasePresenter<ChooseSportsView> imple
         super.init(context);
         sportEvents = new ArrayList<>();
         sportEventsChosen = new ArrayList<>();
+        userInteractor = new UserInteractor();
     }
 
     public void initSportEvents() {
@@ -75,5 +81,36 @@ public class ChooseSportsPresenter extends BasePresenter<ChooseSportsView> imple
         sportEventsChosen.remove(item);
         view.refreshEventChoose(sportEventsChosen);
 
+    }
+    public void sportsLikedConfirmed(){
+        StringBuffer sportsLiked = null;
+        MyApplication myApplication = (MyApplication)this.mContext.getApplicationContext();
+
+        for(SportEvents sportEvents : sportEventsChosen){
+            if(sportsLiked == null){
+                sportsLiked = new StringBuffer(sportEvents.getEventCode());
+            }
+            else{
+                sportsLiked.append(",");
+                sportsLiked.append(sportEvents.getEventCode());
+            }
+        }
+        final String userId = myApplication.getUserId();
+        final String sportsLike = sportsLiked.toString();
+        //UserService userService = RetrofitManager.getRetrofit().create(UserService.class);
+        view.showProgressBar();
+        userInteractor.updateSportsLike(userId, sportsLike, new InteractorCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                view.hideProgressBar();
+
+            }
+
+            @Override
+            public void onFailed(String error) {
+                view.hideProgressBar();
+                ToastUtil.show(mContext, mContext.getString(R.string.update_sports_like_failed), 1500);
+            }
+        });
     }
 }

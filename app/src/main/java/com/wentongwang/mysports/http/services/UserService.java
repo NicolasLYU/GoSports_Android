@@ -1,7 +1,11 @@
 package com.wentongwang.mysports.http.services;
 
 import com.wentongwang.mysports.http.RetrofitResult;
+import com.wentongwang.mysports.model.module.SportEvents;
 
+import java.util.List;
+
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -26,4 +30,9 @@ public interface UserService {
 
     @GET("user/checkuserexisted")
     Observable<RetrofitResult> userNameExisted(@Query("userName") String userName);
+
+    @FormUrlEncoded
+    @POST("user/updatesportslike")
+    Observable<RetrofitResult> updateSportsLike(@Field("userId") String userId,
+                                                @Field("sportsLike") String sportsLike);
 }

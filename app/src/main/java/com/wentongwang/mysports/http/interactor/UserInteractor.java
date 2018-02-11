@@ -7,6 +7,7 @@ import com.wentongwang.mysports.http.RetrofitResult;
 import com.wentongwang.mysports.http.services.UserService;
 import com.wentongwang.mysports.model.module.LoginResponse;
 
+import java.util.List;
 import java.util.Map;
 
 import rx.Observable;
@@ -64,6 +65,17 @@ public class UserInteractor {
                 .subscribe(result -> callback.onSuccess(result.getObject(LoginResponse.class)),
                         e -> callback.onFailed(e.getMessage()));
 
+    }
+
+    public void updateSportsLike(String userId, String sportsLike, final InteractorCallback<String> callback) {
+        UserService userService = RetrofitManager.getRetrofit().create(UserService.class);
+
+        Observable<RetrofitResult> observable = userService.updateSportsLike(userId, sportsLike);
+        observable.subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.immediate())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(result -> callback.onSuccess(result.getResult()),
+                        e -> callback.onFailed(e.getMessage()));
     }
 
 

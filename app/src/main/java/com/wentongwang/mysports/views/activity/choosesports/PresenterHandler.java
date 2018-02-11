@@ -10,4 +10,5 @@ public interface PresenterHandler {
     void removeChooseEvent(SportEvents events);
 
     void addChooseEvent(SportEvents events);
+
 }

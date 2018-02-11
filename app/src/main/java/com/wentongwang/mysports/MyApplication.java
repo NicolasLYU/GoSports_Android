@@ -11,6 +11,13 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
  * Created by Wentong WANG on 2016/9/16.
  */
 public class MyApplication extends Application {
+    private String userId = null;
+    public void setUserId(String userId){
+        this.userId = userId;
+    }
+    public String getUserId(){
+        return this.userId;
+    }
     @Override
     public void onCreate() {
         super.onCreate();
@@ -25,4 +32,6 @@ public class MyApplication extends Application {
                         .build()
         );
     }
+
+
 }

@@ -13,4 +13,5 @@ public interface ChooseSportsView extends BaseView {
     void initGirdViewsAndPoints();
 
     void refreshEventChoose(List<SportEvents> list);
+
 }
